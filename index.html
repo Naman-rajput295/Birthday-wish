@@ -1,105 +1,136 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday My Love</title>
+    <title>Happy Birthday Nanyyyyy! 🎉</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             text-align: center;
-            background-color: #ffe6f2;
-            padding: 50px;
+            background: linear-gradient(45deg, #ff1493, #ff6600, #ffcc00, #00ffcc, #0099ff);
+            background-size: 400% 400%;
+            animation: backgroundShift 6s infinite linear;
             overflow: hidden;
         }
-        #wish-container {
-            display: none;
-            font-size: 26px;
-            color: #d63384;
-            margin-top: 20px;
-            font-weight: bold;
-            animation: fadeIn 2s;
+        @keyframes backgroundShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        h1 {
+            font-size: 50px;
+            color: white;
+            text-shadow: 3px 3px 10px #ff0000;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 3px 3px 10px #ff0000; }
+            to { text-shadow: 3px 3px 20px #ffff00; }
         }
         .heart {
             position: absolute;
+            font-size: 40px;
             color: red;
-            font-size: 30px;
-            animation: floatUp 3s linear infinite;
+            animation: floatUp 4s linear infinite;
         }
         @keyframes floatUp {
             from { transform: translateY(0); opacity: 1; }
             to { transform: translateY(-100vh); opacity: 0; }
         }
-        h1 {
-            color: #ff1493;
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: confettiFall 3s linear infinite;
+        }
+        @keyframes confettiFall {
+            from { transform: translateY(-100vh); opacity: 1; }
+            to { transform: translateY(100vh); opacity: 0; }
         }
         button {
-            background-color: #ff1493;
-            color: white;
-            border: none;
+            font-size: 22px;
             padding: 10px 20px;
-            font-size: 18px;
+            border: none;
+            background: #ff1493;
+            color: white;
             cursor: pointer;
-            border-radius: 5px;
+            animation: bounce 1s infinite;
         }
-        button:hover {
-            background-color: #d63384;
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        #wish-container {
+            display: none;
+            font-size: 28px;
+            color: yellow;
+            text-shadow: 3px 3px 10px #ff0000;
+            margin-top: 20px;
         }
         #photo {
-            width: 250px;
+            width: 300px;
             height: auto;
-            border-radius: 10px;
+            border-radius: 20px;
             margin-top: 20px;
             display: none;
+            box-shadow: 0px 0px 15px 5px white;
         }
     </style>
 </head>
 <body>
-    <h1>Happy Birthday My Love ❤️</h1>
-    <p>Enter your name, my love, to receive a special wish!</p>
+    <h1>Happy Birthday Nanyyyyy!!! 🎂🎊🎈</h1>
+    <p>Enter your name to receive a magical wish!</p>
     <input type="text" id="name-input" placeholder="Enter your name">
-    <button onclick="generateWish()">Get Your Special Wish</button>
+    <button onclick="generateWish()">Get Your Crazy Wish 🎉</button>
     <div id="wish-container"></div>
+    <img id="photo" src="birthday-photo.jpg" alt="Happy Birthday Nanyyyyy!"><script>
+    function generateWish() {
+        let name = document.getElementById('name-input').value || "Nanyyyyy";
+        let wishes = [
+            `Happy Birthday, my crazy love ${name}! 🎉 You bring endless joy into my life! ❤️`,
+            `Wishing you an explosion of happiness, ${name}! 🎇 You are the best thing that ever happened to me!`,
+            `Nanyyyyy, you're my sunshine and my moonlight! 🌞🌙 Have the best birthday ever! 🎂💖`,
+            `To my wild, fun, and beautiful love ${name}, today is all about YOU! Enjoy every second! 🎁✨`
+        ];
+        let randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+        
+        let wishContainer = document.getElementById('wish-container');
+        wishContainer.innerHTML = randomWish;
+        wishContainer.style.display = 'block';
+        
+        let photo = document.getElementById('photo');
+        photo.style.display = 'block';
+        
+        createHearts();
+        createConfetti();
+    }
     
-    <!-- Ensure to upload this image in Netlify -->
-    <img id="photo" src="birthday-photo.jpg" alt="Happy Birthday My Love">
-
-    <script>
-        function generateWish() {
-            let name = document.getElementById('name-input').value || "My Love";
-            let wishes = [
-                `Happy Birthday, my love ${name}! ❤️ You are my world, and I am so lucky to have you. May your day be filled with endless love and joy!`,
-                `Wishing you a magical birthday, my love ${name}! 🎉 You deserve all the happiness in the world today and always!`,
-                `${name}, you are the most beautiful person in my life! May this special day bring you as much love and happiness as you bring to me! 💖`,
-                `My love ${name}, every moment with you is a blessing. Happy Birthday, sweetheart! Let's make this day unforgettable! 💕`
-            ];
-            let randomWish = wishes[Math.floor(Math.random() * wishes.length)];
-            
-            let wishContainer = document.getElementById('wish-container');
-            wishContainer.innerHTML = randomWish;
-            wishContainer.style.display = 'block';
-            
-            let photo = document.getElementById('photo');
-            photo.style.display = 'block';
-            
-            createHearts();
+    function createHearts() {
+        for (let i = 0; i < 15; i++) {
+            let heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
         }
-
-        function createHearts() {
-            for (let i = 0; i < 20; i++) {
-                let heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = '❤️';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
-                document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), 3000);
-            }
+    }
+    
+    function createConfetti() {
+        for (let i = 0; i < 30; i++) {
+            let confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 3000);
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
