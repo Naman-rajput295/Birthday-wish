@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6f2;
+            padding: 50px;
+            overflow: hidden;
+        }
+        #wish-container {
+            display: none;
+            font-size: 26px;
+            color: #d63384;
+            margin-top: 20px;
+            font-weight: bold;
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 30px;
+            animation: floatUp 3s linear infinite;
+        }
+        @keyframes floatUp {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-100vh); opacity: 0; }
+        }
+        h1 {
+            color: #ff1493;
+        }
+        button {
+            background-color: #ff1493;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #d63384;
+        }
+        #photo {
+            width: 250px;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Birthday My Love ❤️</h1>
+    <p>Enter your name, my love, to receive a special wish!</p>
+    <input type="text" id="name-input" placeholder="Enter your name">
+    <button onclick="generateWish()">Get Your Special Wish</button>
+    <div id="wish-container"></div>
+    
+    <!-- Ensure to upload this image in Netlify -->
+    <img id="photo" src="birthday-photo.jpg" alt="Happy Birthday My Love">
+
+    <script>
+        function generateWish() {
+            let name = document.getElementById('name-input').value || "My Love";
+            let wishes = [
+                `Happy Birthday, my love ${name}! ❤️ You are my world, and I am so lucky to have you. May your day be filled with endless love and joy!`,
+                `Wishing you a magical birthday, my love ${name}! 🎉 You deserve all the happiness in the world today and always!`,
+                `${name}, you are the most beautiful person in my life! May this special day bring you as much love and happiness as you bring to me! 💖`,
+                `My love ${name}, every moment with you is a blessing. Happy Birthday, sweetheart! Let's make this day unforgettable! 💕`
+            ];
+            let randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+            
+            let wishContainer = document.getElementById('wish-container');
+            wishContainer.innerHTML = randomWish;
+            wishContainer.style.display = 'block';
+            
+            let photo = document.getElementById('photo');
+            photo.style.display = 'block';
+            
+            createHearts();
+        }
+
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 3000);
+            }
+        }
+    </script>
+</body>
+</html>
