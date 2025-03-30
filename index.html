@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Nanyyyyy! 🎉</title>
+    <title>Happy 17th Birthday Nancy! 🎉</title>
     <style>
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -27,9 +27,62 @@
             from { text-shadow: 3px 3px 10px #ff0000; }
             to { text-shadow: 3px 3px 20px #ffff00; }
         }
+        .lovely-message {
+            font-size: 24px;
+            color: yellow;
+            text-shadow: 3px 3px 10px #ff0000;
+            margin-top: 20px;
+            font-weight: bold;
+            animation: fadeIn 3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        #dob-info {
+            font-size: 20px;
+            color: white;
+            margin-top: 20px;
+            text-shadow: 2px 2px 5px #ff1493;
+        }
+        #love-question {
+            margin-top: 50px;
+            font-size: 24px;
+            color: white;
+            text-shadow: 2px 2px 5px pink;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        #yes-button {
+            background-color: #ff1493;
+            color: white;
+        }
+        #no-button {
+            background-color: gray;
+            color: white;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        #love-message {
+            font-size: 30px;
+            color: red;
+            font-weight: bold;
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 2s;
+        }
         .heart {
             position: absolute;
-            font-size: 40px;
+            font-size: 30px;
             color: red;
             animation: floatUp 4s linear infinite;
         }
@@ -37,97 +90,48 @@
             from { transform: translateY(0); opacity: 1; }
             to { transform: translateY(-100vh); opacity: 0; }
         }
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #ffffff;
-            border-radius: 50%;
-            animation: confettiFall 3s linear infinite;
-        }
-        @keyframes confettiFall {
-            from { transform: translateY(-100vh); opacity: 1; }
-            to { transform: translateY(100vh); opacity: 0; }
-        }
-        button {
-            font-size: 22px;
-            padding: 10px 20px;
-            border: none;
-            background: #ff1493;
-            color: white;
-            cursor: pointer;
-            animation: bounce 1s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        #wish-container {
-            display: none;
-            font-size: 28px;
-            color: yellow;
-            text-shadow: 3px 3px 10px #ff0000;
-            margin-top: 20px;
-        }
-        #photo {
-            width: 300px;
-            height: auto;
-            border-radius: 20px;
-            margin-top: 20px;
-            display: none;
-            box-shadow: 0px 0px 15px 5px white;
-        }
     </style>
 </head>
 <body>
-    <h1>Happy Birthday Nanyyyyy!!! 🎂🎊🎈</h1>
-    <p>Enter your name to receive a magical wish!</p>
-    <input type="text" id="name-input" placeholder="Enter your name">
-    <button onclick="generateWish()">Get Your Crazy Wish 🎉</button>
-    <div id="wish-container"></div>
-    <img id="photo" src="birthday-photo.jpg" alt="Happy Birthday Nanyyyyy!"><script>
-    function generateWish() {
-        let name = document.getElementById('name-input').value || "Nanyyyyy";
-        let wishes = [
-            `Happy Birthday, my crazy love ${name}! 🎉 You bring endless joy into my life! ❤️`,
-            `Wishing you an explosion of happiness, ${name}! 🎇 You are the best thing that ever happened to me!`,
-            `Nanyyyyy, you're my sunshine and my moonlight! 🌞🌙 Have the best birthday ever! 🎂💖`,
-            `To my wild, fun, and beautiful love ${name}, today is all about YOU! Enjoy every second! 🎁✨`
-        ];
-        let randomWish = wishes[Math.floor(Math.random() * wishes.length)];
-        
-        let wishContainer = document.getElementById('wish-container');
-        wishContainer.innerHTML = randomWish;
-        wishContainer.style.display = 'block';
-        
-        let photo = document.getElementById('photo');
-        photo.style.display = 'block';
-        
-        createHearts();
-        createConfetti();
+    <h1>Happy 17th Birthday My Love, My Everything, Nancy!!! 🎂🎊🎈</h1>
+    <p class="lovely-message">Nancy, you are the most important person in my life. My heart beats only for you, my world revolves around you, 
+    and my happiness is complete only when I see you smile. From the moment you entered my life, everything changed for the better. 
+    You are not just my love, but my reason to breathe, my greatest blessing, my destiny. On this special day, I want to remind you that you are loved beyond measure. You are my dream come true, my brightest light in the darkest times, 
+and the one I will always cherish with all my heart. No words can truly express how much you mean to me. 
+
+As you turn 17 today, I promise to always stand by your side, to love you endlessly, and to make you feel like the queen that you are. 
+May your life be filled with the purest joy, the greatest success, and the kind of love that only grows stronger with time. 
+
+Happy Birthday, my love, my angel, my Nancy! You are my forever and always. 💖🎂🎁</p>
+<p id="dob-info"></p>
+
+<p id="love-question">Do you love me? 💕</p>
+<div class="buttons">
+    <button id="yes-button" onclick="showLove()">Yes 💖</button>
+    <button id="no-button">No ❌</button>
+</div>
+<p id="love-message">I love you toooo! ❤️❤️❤️</p>
+
+<script>
+    function calculateMinutes() {
+        const dob = new Date(2008, 5, 17); // 17 June 2008 (Months are 0-based)
+        const now = new Date();
+        const diffInMs = now - dob;
+        const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
+        document.getElementById("dob-info").innerHTML = `Nancy was born on June 17, 2008, and has lived approximately <strong>${diffInMinutes.toLocaleString()}</strong> minutes so far! 🎉`;
     }
-    
-    function createHearts() {
-        for (let i = 0; i < 15; i++) {
-            let heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+    calculateMinutes();
+
+    function showLove() {
+        document.getElementById("love-message").style.display = "block";
+        for (let i = 0; i < 50; i++) {
+            let heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
             document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 4000);
-        }
-    }
-    
-    function createConfetti() {
-        for (let i = 0; i < 30; i++) {
-            let confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
-            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            document.body.appendChild(confetti);
-            setTimeout(() => confetti.remove(), 3000);
+            setTimeout(() => { heart.remove(); }, 5000);
         }
     }
 </script>
