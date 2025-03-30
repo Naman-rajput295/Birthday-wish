@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,14 +31,8 @@
             animation: floatUp 3s linear infinite;
         }
         @keyframes floatUp {
-            from {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            to {
-                transform: translateY(-100vh);
-                opacity: 0;
-            }
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-100vh); opacity: 0; }
         }
         h1 {
             color: #ff1493;
@@ -69,39 +64,42 @@
     <input type="text" id="name-input" placeholder="Enter your name">
     <button onclick="generateWish()">Get Your Special Wish</button>
     <div id="wish-container"></div>
-    <img id="photo" src="/mnt/data/file-KDyrVkS1QFj7YJhfpLv9LP" alt="Happy Birthday My Love"><script>
-    function generateWish() {
-        let name = document.getElementById('name-input').value || "My Love";
-        let wishes = [
-            `Happy Birthday, my love ${name}! ❤️ You are my world, and I am so lucky to have you. May your day be filled with endless love and joy!`,
-            `Wishing you a magical birthday, my love ${name}! 🎉 You deserve all the happiness in the world today and always!`,
-            `${name}, you are the most beautiful person in my life! May this special day bring you as much love and happiness as you bring to me! 💖`,
-            `My love ${name}, every moment with you is a blessing. Happy Birthday, sweetheart! Let's make this day unforgettable! 💕`
-        ];
-        let randomWish = wishes[Math.floor(Math.random() * wishes.length)];
-        
-        let wishContainer = document.getElementById('wish-container');
-        wishContainer.innerHTML = randomWish;
-        wishContainer.style.display = 'block';
-        
-        let photo = document.getElementById('photo');
-        photo.style.display = 'block';
-        
-        createHearts();
-    }
+    
+    <!-- Ensure to upload this image in Netlify -->
+    <img id="photo" src="birthday-photo.jpg" alt="Happy Birthday My Love">
 
-    function createHearts() {
-        for (let i = 0; i < 20; i++) {
-            let heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 3000);
+    <script>
+        function generateWish() {
+            let name = document.getElementById('name-input').value || "My Love";
+            let wishes = [
+                `Happy Birthday, my love ${name}! ❤️ You are my world, and I am so lucky to have you. May your day be filled with endless love and joy!`,
+                `Wishing you a magical birthday, my love ${name}! 🎉 You deserve all the happiness in the world today and always!`,
+                `${name}, you are the most beautiful person in my life! May this special day bring you as much love and happiness as you bring to me! 💖`,
+                `My love ${name}, every moment with you is a blessing. Happy Birthday, sweetheart! Let's make this day unforgettable! 💕`
+            ];
+            let randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+            
+            let wishContainer = document.getElementById('wish-container');
+            wishContainer.innerHTML = randomWish;
+            wishContainer.style.display = 'block';
+            
+            let photo = document.getElementById('photo');
+            photo.style.display = 'block';
+            
+            createHearts();
         }
-    }
-</script>
 
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 3000);
+            }
+        }
+    </script>
 </body>
 </html>
